@@ -1,0 +1,57 @@
+
+
+/*terminal*/
+PLUS -> +
+MINUS -> -
+MULTIPLY -> *
+DIVIDE -> /
+MODULO -> %
+POWER -> **
+NUMBER -> num
+IF -> if
+ELSE -> else
+BREAK -> break
+WHILE -> while
+FOR -> for
+CONST -> const
+NULL -> null
+COLON -> :
+SEMI_COLON -> ;
+COMMA -> ,
+PERIOD -> .
+SQUARE_BRACKET_OPEN -> [
+SQUARE_BRACKET_CLOSE -> ]
+ROUND_BRACKET_OPEN -> (
+ROUND_BRACKET_CLOSE -> )
+CURLY_BARACKET_OPEN -> {
+CURLY_BARACKET_CLOSE -> }
+EQUAL -> =
+EXCLAMATION -> !
+GREATER_THAN -> >
+LOWER_THAN -> <
+BOOLEAN -> true | false
+LET -> let
+VAR -> var
+CONST -> const
+CHAR -> char
+LOGICAL_AND -> &&
+LOGICAL_OR -> ||
+BITWISE_AND -> &
+BITWISE_OR -> |
+BITWISE_NOT -> ~
+BITWISE_XOR -> ^
+BITWISE_RIGHT -> >>
+BITWISE_LEFT -> <<
+BITWISE_UNSIGNED_RIGHT -> >>>
+RETURN -> return
+FUNCTION -> function
+NEW -> new
+CONTINUE -> continue
+TRY -> try
+CATCH -> catch
+FINALLY -> finally
+SWITCH -> switch
+CASE -> case
+DEFAULT -> default
+THROW -> throw
+DELETE -> delete
