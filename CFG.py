@@ -46,6 +46,14 @@ def getTerminals(path):
             terminal.append(line)
     return terminal
 
+#  Membuat rule terminal
+def getProdRules(path):
+    terminals = getTerminals(path)
+    ProdRules = []
+    for terminal in terminals:
+        rule = terminal.upper() + "_rule" # Membuat LHS
+        ProdRules.append([rule, terminal]) # Membuat prod rule
+    return ProdRules
 
 cfg = getCFG("CFG2.txt")
 for y in cfg:
