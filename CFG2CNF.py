@@ -8,14 +8,14 @@ def removeProd(cfg, terminals):
             if (prod[1] == prod[0]): 
                 continue # mengabaikan S -> S
             else: #(prod[1] != prod[0]): 
-                i = 0
-                while(i < len(cfg)):
+                for i in range (len(cfg)):
                     if (prod[1] == cfg[i][0]):
                         temp = [prod[0]]
-                        for j in range(1, len(cfg[i])):
+                        j = 1
+                        while(j < len(cfg[i])):
                             temp.append(cfg[i][j])
-                        cfg.append(temp)   
-                    i += 1
+                            j += 1
+                        cfg.append(temp)
             delete.append(prod)
     for prod in delete:
         cfg.remove(prod)
@@ -34,18 +34,23 @@ def checkRHS(cfg, terminals, rules):
         # Mengecek apakah terdapat lebih dari 1 terminal di RHS
         if (len(prod) > 2):
             if any(elmt in prod for elmt in terminals):
-                for i in range(len(prod)):
+                i = 0
+                while(i<len(prod)):
                     if (prod[i] in terminals):
-                        prod[i] = getRule(prod[i], rules) # convert term to its corresponding non-term
+                        prod[i] = getRule(prod[i], rules)
+                    i += 1    
     count = 1
     idx = 1
     for prod in cfg:
         # Mengecek apakah terdapat lebih dari 2 non terminal di RHS 
         if (len(prod) > 3):
             rule = []
-            for i in range(2, len(prod)):
+            i = 2
+            while(i < len(prod)):
                 rule.append(prod[i])
-            for i in range(2, len(prod)):
+                i += 1
+            j = 2 
+            while(j < len(prod)):
                 prod.pop()
             new_variable = rule[0] + "_rule"
             for elmts in cfg:
