@@ -1,4 +1,5 @@
-
+import grammpy as gr
+# from grammpy import cyk
 
 def getCNF(path):
     f = open(path)
@@ -15,44 +16,51 @@ def getCNF(path):
 
 def cyk(listword,cnf):
     l=len(listword)
-    tab=[["" for i in range (l)] for i in range (l)]
+    tab=[[[] for i in range (l)] for i in range (l)]
     for i in range (l):
         tab[i][i]=getState([listword[i]],cnf)
-    # displayMatrix(tab)
+
     for le in range (1,l+1):
         for i in range (l-le+1):
             j=i+le-1
             for k in range (i,j):
-                tab[i][j]=getState([tab[i][k],tab[k+1][j]],cnf)
+                st=stateTosearch([tab[i][k],tab[k+1][j]])
+                print(f"st:{st},tab[i][k]:{tab[i][k]},tab[k+1][j]:{tab[k+1][j]}")
+                tab[i][j]+=getState(st,cnf)
+                tab[i][j]=removeDuplicate(tab[i][j])
+                print(k)
+                displayMatrix(tab)
     return tab
 
+def stateTosearch(statelist):
+    # print(statelist)
+    a=[]
+    for i in range(len(statelist[0])):
+        for j in range (len(statelist[1])):
+            a.append([statelist[0][i],statelist[1][j]])
+    # print(a)
+    return a
+def removeDuplicate(x):
+  return list(dict.fromkeys(x))
 def getState(wordlist,cnf):
-    print(wordlist)
+    # print(wordlist)
+    a=[]
     for c in cnf:
-        # print(len(c))
-        # print(len(wordlist))
-        if (len(wordlist)==len(c)-1):
-            isril = True
-            # for i in range (1,len(c)):
-            #     # isril=False
-            #     if (wordlist[i]==c[i]):
-            #         isril=True
-            #     else:
-            #         isril=False
-            #         break
-                    # return c[0]
-            i=0
-            # print(wordlist[i])
-            while (isril and i<len(wordlist)):
+        for j in range (len(wordlist)):
+            if (len(wordlist[j])==len(c)-1):
+                isril = True
+                i=0
                 # print(wordlist[i])
-                # print(c[i])
-                if (wordlist[i]!=c[i+1]):
-                    isril=False
-                i+=1
-            if isril:
-                return c[0]
+                # print(c)
+                while (isril and i<len(wordlist[j])):
+                    if (wordlist[j][i]!=c[i+1]):
+                        isril=False
+                    # print(i)
+                    i+=1
+                if isril:
+                    a.append(c[0])
         # print(c)
-    return "NOTFOUND"
+    return a
 
 def cekGrammar(wordlist,cnf):
     for c in cnf:
@@ -92,7 +100,7 @@ cnf=getCNF("CNF2.txt")
 x="for i in range"
 x=x.split(" ")
 print(x)
-c=[["S","A","B"],["S","S","B"],["A","a"],["B","b"],["B","B","B"]]
+c=[["S","A","B"],["S","B","C"],["A","a"],["A","B","A"],["B","C","C"],["B","b"],["C","A","B"],["C","a"]]
 print("aa")
 print(getState([")"],cnf))
 print("bb")
@@ -105,4 +113,7 @@ def displayMatrix (matrix):
                 print(matrix[i][j], end= " ")
         print()
 # print(cyk(x,cnf))
-displayMatrix(cyk(["a","b","b","b"],c))
+displayMatrix(cyk(["b","a","a","a","b"],c))
+# print(stateTosearch([["S","A"],["A","C"]]))
+# o=cyk(c,["b","a","a","b","a"])
+# print(o)
