@@ -5,6 +5,8 @@ def parseFACFG(parsedArray,CFGterminal):
     tempFA = []
     arrayFA = []
 
+    nonVar = ["1","2","3","4","5","6","7","8","9","0","/","**","*","+","-","%"]
+
     isKurung = False
 
     stackKurung = []
@@ -15,14 +17,21 @@ def parseFACFG(parsedArray,CFGterminal):
             tempFA.append(alphabet)
             arrayCFG.pop(index)
         elif len(tempFA) != 0 :
-            if alphabet == "(" :
+            if alphabet == "(" or alphabet == "=":
                 tempFA.append(":-")
-            arrayCFG.insert(index,"operation")
+            if any(e in tempFA for e in nonVar):
+                arrayCFG.insert(index,"operation")
+            else :
+                arrayCFG.insert(index,"var_name")
             index += 2
             arrayFA.extend(tempFA.copy())
             tempFA = []
         else :
-            index += 1
+            if alphabet == "=":
+                tempFA.append(":-")
+                index += 2
+            else :
+                index += 1
     return arrayFA,arrayCFG
 
 def parseNODEJS(path):
