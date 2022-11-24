@@ -11,48 +11,17 @@ def parseFACFG(parsedArray,CFGterminal):
     index = 0
 
     for alphabet in parsedArray:
-        if isKurung :
-            if alphabet not in CFGterminal :
-                tempFA.append(alphabet)
-                arrayCFG.pop(index)
-            elif alphabet == "(" :
-                tempFA.append(alphabet)
-                arrayCFG.pop(index)
-                stackKurung.append(alphabet)
-            elif alphabet == ")" :
-                if len(tempFA) != 0 and len(stackKurung) == 0:
-                    arrayCFG.insert(index,"operation")
-                    index += 2
-                    arrayFA.extend(tempFA.copy())
-                    tempFA = []
-                    isKurung = False
-                elif len(stackKurung) == 0:
-                    index += 1
-                    isKurung = False
-                else :
-                    tempFA.append(alphabet)
-                    arrayCFG.pop(index)
-                    stackKurung.pop(0)
-            elif len(tempFA) != 0 :
-                arrayCFG.insert(index,"operation")
-                index += 2
-                arrayFA.extend(tempFA.copy())
-                tempFA = []
-            else :
-                index += 1
-        elif alphabet not in CFGterminal :
+        if alphabet not in CFGterminal :
             tempFA.append(alphabet)
             arrayCFG.pop(index)
         elif len(tempFA) != 0 :
             if alphabet == "(" :
-                isKurung = True
+                tempFA.append(":-")
             arrayCFG.insert(index,"operation")
             index += 2
             arrayFA.extend(tempFA.copy())
             tempFA = []
         else :
-            if alphabet == "(" :
-                isKurung = True
             index += 1
     return arrayFA,arrayCFG
 
