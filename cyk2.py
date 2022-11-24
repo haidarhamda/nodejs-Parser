@@ -55,7 +55,7 @@ def getState(wordlist,cnf):
                 # print(wordlist[i])
                 # print(c)
                 while (isril and i<len(wordlist[j])):
-                    if (wordlist[j][i]!=c[i+1]):
+                    if (wordlist[j][i] not in c[i+1]):
                         isril=False
                     # print(i)
                     i+=1
@@ -84,8 +84,8 @@ def cekGrammar(wordlist,cnf):
             # print(wordlist[i])
             while (isril and i < len(wordlist)):
                 # print(wordlist[i])
-                # print(c[i])
-                if (wordlist[i] != c[i + 1]):
+                print(c[i])
+                if (wordlist[i] not in c[i + 1]):
                     isril = False
                 i += 1
             if isril:
@@ -100,7 +100,7 @@ def cekGrammar(wordlist,cnf):
 #     return False
 if __name__ == "__main__" :
     cnf=getCNF("CNF.txt")
-    print(cnf)
+    # print(cnf)
     # print(cnf)
     # for c in cnf:
     #     print(c)
@@ -121,7 +121,8 @@ if __name__ == "__main__" :
             print()
     # print(cyk(x,cnf))
     # displayMatrix(cyk(["a","a","b","a","b"],c))
-    displayMatrix(cyk([["if"],["("],["operation"],[")"],["{"],["operation"],["="],["operation"],["}"]], cnf))
+    displayMatrix(cyk([["if"],["("],["operation"],[")"],["{"],["operation"],["}"]], cnf))
+
     # print(stateTosearch([["S","A"],["A","C"]]))
     # o=cyk(c,["b","a","a","b","a"])
     # print(o)
