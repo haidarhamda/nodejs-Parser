@@ -85,4 +85,5 @@ def writeCNF(filecfg, filecnf):
         file.write(str + "\n")
     file.close()
 
-#writeCNF("CFG2.txt","CNF.txt")
+if __name__=="__main__":
+    writeCNF("CFG2.txt","CNF.txt")

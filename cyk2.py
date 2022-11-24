@@ -45,7 +45,9 @@ def removeDuplicate(x):
 def getState(wordlist,cnf):
     # print(wordlist)
     a=[]
+    # print(cnf)
     for c in cnf:
+        # print(c)
         for j in range (len(wordlist)):
             if (len(wordlist[j])==len(c)-1):
                 isril = True
@@ -63,8 +65,10 @@ def getState(wordlist,cnf):
     return a
 
 def cekGrammar(wordlist,cnf):
+    print(cnf)
     for c in cnf:
-        # print(len(c))
+        print(c)
+        print(len(c))
         # print(len(wordlist))
         if (len(wordlist) == len(c) - 1):
             isril = True
@@ -95,16 +99,17 @@ def cekGrammar(wordlist,cnf):
 #                 return True
 #     return False
 if __name__ == "__main__" :
-    cnf=getCNF("CNF2.txt")
+    cnf=getCNF("CNF.txt")
+    # print(cnf)
     # for c in cnf:
     #     print(c)
     x="for i in range"
     x=x.split(" ")
     print(x)
     c=[["S","A","B"],["S","B","C"],["A","a"],["A","B","A"],["B","C","C"],["B","b"],["C","A","B"],["C","a"]]
-    print("aa")
-    print(getState([")"],cnf))
-    print("bb")
+    # print("aa")
+    # print(getState([")"],cnf))
+    # print("bb")
     def displayMatrix (matrix):
         for i in range (len(matrix)):
             for j in range (len(matrix[0])):
@@ -114,7 +119,8 @@ if __name__ == "__main__" :
                     print(matrix[i][j], end= " ")
             print()
     # print(cyk(x,cnf))
-    displayMatrix(cyk(["a","a","b","a","b"],c))
+    # displayMatrix(cyk(["a","a","b","a","b"],c))
+    displayMatrix(cyk([["if"],["("],["operation"],[")"]], cnf))
     # print(stateTosearch([["S","A"],["A","C"]]))
     # o=cyk(c,["b","a","a","b","a"])
     # print(o)
