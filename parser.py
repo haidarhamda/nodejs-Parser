@@ -44,7 +44,6 @@ def parseNODEJS(path):
             for symbol in symbols:
                 line = line.replace(symbol, " "+symbol+" ")
             line = line.replace("=  =","==")
-            print(line)
             line = line.split()
             #print(line)
             if line[:2] == ["/","/"] :
