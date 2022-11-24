@@ -41,3 +41,4 @@ new
 operation
 =
 epsilon
+var_name
