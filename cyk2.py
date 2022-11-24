@@ -100,6 +100,7 @@ def cekGrammar(wordlist,cnf):
 #     return False
 if __name__ == "__main__" :
     cnf=getCNF("CNF.txt")
+    print(cnf)
     # print(cnf)
     # for c in cnf:
     #     print(c)
@@ -120,7 +121,7 @@ if __name__ == "__main__" :
             print()
     # print(cyk(x,cnf))
     # displayMatrix(cyk(["a","a","b","a","b"],c))
-    displayMatrix(cyk([["if"],["("],["operation"],[")"]], cnf))
+    displayMatrix(cyk([["if"],["("],["operation"],[")"],["{"],["operation"],["="],["operation"],["}"]], cnf))
     # print(stateTosearch([["S","A"],["A","C"]]))
     # o=cyk(c,["b","a","a","b","a"])
     # print(o)
