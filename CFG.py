@@ -55,9 +55,10 @@ def getProdRules(path):
         ProdRules.append([rule, terminal]) # Membuat prod rule
     return ProdRules
 
-cfg = getCFG("CFG2.txt")
-for y in cfg:
-    print(y)
-terminal = getTerminals("terminal.txt")
-for y in terminal:
-    print(y)
+if __name__ == "__main__" :
+    cfg = getCFG("CFG2.txt")
+    for y in cfg:
+        print(y)
+    terminal = getTerminals("terminal.txt")
+    for y in terminal:
+        print(y)
