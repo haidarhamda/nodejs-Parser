@@ -1,5 +1,3 @@
-import grammpy as gr
-# from grammpy import cyk
 
 def getCNF(path):
     f = open(path)

@@ -1,4 +1,6 @@
-if (x == 0) {
+function do_something(x) {
+  // This is a sample comment
+  if (x == 0) {
     return 0
   } else if (x + 4 == 1) {
     if (true) {
@@ -10,4 +12,5 @@ if (x == 0) {
     return 4
   } else {
     return "Momen"
+  }
 }
