@@ -94,26 +94,27 @@ def cekGrammar(wordlist,cnf):
 #             if (word==c[1]):
 #                 return True
 #     return False
-cnf=getCNF("CNF2.txt")
-# for c in cnf:
-#     print(c)
-x="for i in range"
-x=x.split(" ")
-print(x)
-c=[["S","A","B"],["S","B","C"],["A","a"],["A","B","A"],["B","C","C"],["B","b"],["C","A","B"],["C","a"]]
-print("aa")
-print(getState([")"],cnf))
-print("bb")
-def displayMatrix (matrix):
-    for i in range (len(matrix)):
-        for j in range (len(matrix[0])):
-            if(matrix[i][j]==""):
-                print("p",end=" ")
-            else:
-                print(matrix[i][j], end= " ")
-        print()
-# print(cyk(x,cnf))
-displayMatrix(cyk(["a","a","b","a","b"],c))
-# print(stateTosearch([["S","A"],["A","C"]]))
-# o=cyk(c,["b","a","a","b","a"])
-# print(o)
+if __name__ == "__main__" :
+    cnf=getCNF("CNF2.txt")
+    # for c in cnf:
+    #     print(c)
+    x="for i in range"
+    x=x.split(" ")
+    print(x)
+    c=[["S","A","B"],["S","B","C"],["A","a"],["A","B","A"],["B","C","C"],["B","b"],["C","A","B"],["C","a"]]
+    print("aa")
+    print(getState([")"],cnf))
+    print("bb")
+    def displayMatrix (matrix):
+        for i in range (len(matrix)):
+            for j in range (len(matrix[0])):
+                if(matrix[i][j]==""):
+                    print("p",end=" ")
+                else:
+                    print(matrix[i][j], end= " ")
+            print()
+    # print(cyk(x,cnf))
+    displayMatrix(cyk(["a","a","b","a","b"],c))
+    # print(stateTosearch([["S","A"],["A","C"]]))
+    # o=cyk(c,["b","a","a","b","a"])
+    # print(o)
