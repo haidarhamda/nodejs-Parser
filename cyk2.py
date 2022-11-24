@@ -25,11 +25,11 @@ def cyk(listword,cnf):
             j=i+le-1
             for k in range (i,j):
                 st=stateTosearch([tab[i][k],tab[k+1][j]])
-                print(f"st:{st},tab[i][k]:{tab[i][k]},tab[k+1][j]:{tab[k+1][j]}")
+                # print(f"st:{st},tab[i][k]:{tab[i][k]},tab[k+1][j]:{tab[k+1][j]}")
                 tab[i][j]+=getState(st,cnf)
                 tab[i][j]=removeDuplicate(tab[i][j])
-                print(k)
-                displayMatrix(tab)
+                # print(k)
+                # displayMatrix(tab)
     return tab
 
 def stateTosearch(statelist):
@@ -113,7 +113,7 @@ def displayMatrix (matrix):
                 print(matrix[i][j], end= " ")
         print()
 # print(cyk(x,cnf))
-displayMatrix(cyk(["b","a","a","a","b"],c))
+displayMatrix(cyk(["a","a","b","a","b"],c))
 # print(stateTosearch([["S","A"],["A","C"]]))
 # o=cyk(c,["b","a","a","b","a"])
 # print(o)
