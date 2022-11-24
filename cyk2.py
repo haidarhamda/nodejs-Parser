@@ -32,6 +32,12 @@ def cyk(listword,cnf):
                 # displayMatrix(tab)
     return tab
 
+def cekcyk(tab):
+    isril=False
+    for word in tab[0][len(tab)-1]:
+        if("MAIN_STATE" in word):
+            isril=True
+    return isril
 def stateTosearch(statelist):
     # print(statelist)
     a=[]
@@ -55,7 +61,7 @@ def getState(wordlist,cnf):
                 # print(wordlist[i])
                 # print(c)
                 while (isril and i<len(wordlist[j])):
-                    if (wordlist[j][i] not in c[i+1]):
+                    if (wordlist[j][i] != c[i+1] and wordlist[j][i]+"_rule" not in c[i+1]):
                         isril=False
                     # print(i)
                     i+=1
@@ -98,6 +104,14 @@ def cekGrammar(wordlist,cnf):
 #             if (word==c[1]):
 #                 return True
 #     return False
+def displayMatrix (matrix):
+    for i in range (len(matrix)):
+        for j in range (len(matrix[0])):
+            if(matrix[i][j]==""):
+                print("p",end=" ")
+            else:
+                print(matrix[i][j], end= " ")
+        print()
 if __name__ == "__main__" :
     cnf=getCNF("CNF.txt")
     # print(cnf)
@@ -111,18 +125,13 @@ if __name__ == "__main__" :
     # print("aa")
     # print(getState([")"],cnf))
     # print("bb")
-    def displayMatrix (matrix):
-        for i in range (len(matrix)):
-            for j in range (len(matrix[0])):
-                if(matrix[i][j]==""):
-                    print("p",end=" ")
-                else:
-                    print(matrix[i][j], end= " ")
-            print()
+
     # print(cyk(x,cnf))
     # displayMatrix(cyk(["a","a","b","a","b"],c))
-    displayMatrix(cyk([["if"],["("],["operation"],[")"],["{"],["operation"],["}"]], cnf))
-
+    p=cyk([["if"],["("],["operation"],[")"],["{"],["operation"],["}"]], cnf)
+    displayMatrix(p)
+    if(cekcyk(p)):
+        print("aaa")
     # print(stateTosearch([["S","A"],["A","C"]]))
     # o=cyk(c,["b","a","a","b","a"])
     # print(o)
