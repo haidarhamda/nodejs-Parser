@@ -6,7 +6,7 @@ def parseFACFG(parsedArray,CFGterminal):
     tempFA = []
     arrayFA = []
 
-    nonVar = ["1","2","3","4","5","6","7","8","9","0","/","**","*","+","-","%","&","|",'++','--','&&','||']
+    nonVar = ["1","2","3","4","5","6","7","8","9","0","/","**","*","+","-","%","&","|",'++','--','&&','||','<<','>>','~','!']
 
     isKurung = False
 
@@ -18,7 +18,7 @@ def parseFACFG(parsedArray,CFGterminal):
             tempFA.append(alphabet)
             arrayCFG.pop(index)
         elif len(tempFA) != 0 :
-            if alphabet == "(" or alphabet == "=":
+            if alphabet == "(" or alphabet == "=" or alphabet == "return":
                 tempFA.append(":-")
             if any(e in tempFA for e in nonVar):
                 arrayCFG.insert(index,"operation")
@@ -28,9 +28,8 @@ def parseFACFG(parsedArray,CFGterminal):
             arrayFA.extend(tempFA.copy())
             tempFA = []
         else :
-            if alphabet == "=":
+            if alphabet == "=" or alphabet == "(" or alphabet == "return":
                 tempFA.append(":-")
-                index += 2
             else :
                 index += 1
     return arrayFA,arrayCFG
@@ -40,7 +39,7 @@ def parseNODEJS(path):
     with open(path) as file:
         lines = file.readlines()
         terminals = []
-        symbols = ['(', ')','[',']','{','}','++','--','**',':','/','"',"'",',','.','%','==','!','#','&&','||','<=','>=']
+        symbols = ['(', ')','[',']','{','}','++','--','**',':','/','"',"'",',','.','%','==','!','#','&&','||','<=','>=','>>','<<','!','~']
         symbols2 = ['=','+','-','*','<','>','&',"|"]
         for line in lines:
             for symbol in symbols:
