@@ -8,14 +8,19 @@ def parseFACFG(parsedArray,CFGterminal):
 
     nonVar = ["1","2","3","4","5","6","7","8","9","0","/","**","*","+","-","%","&","|",'++','--','&&','||','<<','>>','~','!']
 
-    isKurung = False
-
-    stackKurung = []
+    ignore = False
+    
     index = 0
 
     for alphabet in parsedArray:
         #print(tempFA)
-        if alphabet not in CFGterminal :
+        if ignore :
+            if alphabet == '"' or alphabet == "'" :
+                ignore = False
+                index += 1
+            else :
+                arrayCFG.pop(index)
+        elif alphabet not in CFGterminal :
             if alphabet == "nl" :
                 if any(e in tempFA for e in nonVar):
                     arrayCFG.insert(index,"operation")
@@ -48,9 +53,9 @@ def parseFACFG(parsedArray,CFGterminal):
         else :
             if alphabet == "=" or alphabet == "(" or alphabet == "return" or alphabet == ";" or alphabet == "." or alphabet == "break" or alphabet == ":":
                 arrayFA.append(":-")
-                index += 1
-            else :
-                index += 1
+            elif alphabet == '"' or alphabet == "'" :
+                ignore = True
+            index += 1
         #print(arrayCFG)
     #print(arrayFA)
     return arrayFA,arrayCFG
