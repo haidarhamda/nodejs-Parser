@@ -19,9 +19,12 @@ if __name__=="__main__":
         o.append([w])
     # print(a)
     # print(o)
-    cnf=getCNF("CNF2.txt")
+    cnf=getCNF("CNF3.txt")
     p=cyk(o,cnf)
     # displayMatrix(p)
+    # print(f"cyk {cekcyk(p)}")
+    # print(f"OP {checkOp(a,operationChecker)}")
+    # print(f"VAR {checkVar(a,variableChecker)}")
     if(cekcyk(p) and checkOp(a,operationChecker) and checkVar(a,variableChecker)):
         print("Accepted")
     else:

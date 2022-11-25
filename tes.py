@@ -3,7 +3,7 @@ from parserr import *
 from CFG2CNF import *
 from CFG import *
 
-c=parseNODEJS("tes4.txt")
+c=parseNODEJS("tes1.txt")
 terminal = getTerminals("terminal.txt")
 a,b=parseFACFG(c,terminal)
 o=[]

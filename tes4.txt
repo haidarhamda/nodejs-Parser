@@ -7,18 +7,18 @@ c=[]
 c[0]
 if(x+1){return}
 else{return null}
-switch(true){
+switch(X){
     case 1:
-        console.log(false)
+        console.log("")
         break
     case y:
-        console.log(NaN)
+        console.log("B")
         x=new a()
         break
     case "aaaa":
         console.log("C")
     default:
-        console.log(9)
+        console.log("D")
         break
 }
 try{throw x}
