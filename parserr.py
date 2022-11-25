@@ -57,6 +57,7 @@ def parseFACFG(parsedArray,CFGterminal):
                 arrayFA.append(":-")
             elif alphabet == '"' or alphabet == "'" :
                 ignore = True
+                arrayFA.append("string")
             index += 1
         #print(arrayCFG)
     #print(arrayFA)
