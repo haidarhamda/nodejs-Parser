@@ -1,4 +1,4 @@
-from parser import *
+from parserr import *
 from CFG2CNF import *
 from cyk2 import *
 import argparse
