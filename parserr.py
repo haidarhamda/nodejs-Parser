@@ -18,7 +18,7 @@ def parseFACFG(parsedArray,CFGterminal):
             tempFA.append(alphabet)
             arrayCFG.pop(index)
         elif len(tempFA) != 0 :
-            print(tempFA)
+            # print(tempFA)
             if alphabet == "(" or alphabet == "=" or alphabet == "return":
                 tempFA.append(":-")
             if any(e in tempFA for e in nonVar):

@@ -2,6 +2,7 @@ from parserr import *
 from CFG2CNF import *
 from cyk2 import *
 import argparse
+from CFG import *
 import os
 parser = argparse.ArgumentParser(description='open file')
 parser.add_argument('file_name',type=str, help='name of file', nargs='?')
@@ -15,11 +16,11 @@ if __name__=="__main__":
     o=[]
     for w in b:
         o.append([w])
-    print(a)
-    print(o)
-    cnf=getCNF("CNF.txt")
+    # print(a)
+    # print(o)
+    cnf=getCNF("CNF2.txt")
     p=cyk(o,cnf)
-    displayMatrix(p)
+    # displayMatrix(p)
     if(cekcyk(p)):
         print("Accepted")
     else:
