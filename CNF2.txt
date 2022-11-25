@@ -27,8 +27,6 @@ NEW_rule -> new
 }_rule -> }
 (_rule -> (
 )_rule -> )
-<_rule -> <
->_rule -> >
 ,_rule -> ,
 ._rule -> .
 //_rule -> //
@@ -212,8 +210,6 @@ CURLY_BRACKET_OPEN -> {
 CURLY_BRACKET_CLOSE -> }
 ROUND_BRACKET_OPEN -> (
 ROUND_BRACKET_CLOSE -> )
-LOWER_THAN -> <
-GREATER_THAN -> >
 COMMA -> ,
 DOT -> .
 COMMENT_TAG -> //
@@ -348,8 +344,6 @@ OPS_TYPE -> false
 OPS_TYPE -> false
 OPS_TYPE -> operation
 OPS_TYPE -> DOUBLE_QUOTE OPS_TYPE_rule1
-COMPARATOR -> >
-COMPARATOR -> <
 MAIN_STATE -> FOR ROUND_BRACKET_OPEN_rule1
 ROUND_BRACKET_OPEN_rule1 -> ROUND_BRACKET_OPEN FOR_INSIDE_rule1
 FOR_INSIDE_rule1 -> FOR_INSIDE ROUND_BRACKET_CLOSE_rule1

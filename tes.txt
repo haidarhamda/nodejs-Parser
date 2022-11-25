@@ -6,6 +6,8 @@ function do_something(x) {
     if (true) {
       return 3
     } else {
+    //x+=1
+    let a = 0
       return 2
     }
   } else if (x == 32) {
@@ -14,5 +16,5 @@ function do_something(x) {
     return "Momen"
   }
 for(;;){break}
-while(x){}
+while(null){}
 }
