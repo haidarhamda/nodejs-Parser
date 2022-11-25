@@ -14,19 +14,33 @@ def parseFACFG(parsedArray,CFGterminal):
     index = 0
 
     for alphabet in parsedArray:
+        #print(tempFA)
         if alphabet not in CFGterminal :
-            tempFA.append(alphabet)
-            arrayCFG.pop(index)
+            if alphabet == "nl" :
+                if any(e in tempFA for e in nonVar):
+                    arrayCFG.insert(index,"operation")
+                    index += 1
+                    arrayCFG.pop(index)
+                elif len(tempFA) != 0:
+                    arrayCFG.insert(index,"var_name")
+                    index += 1
+                    arrayCFG.pop(index)
+                else :
+                    arrayCFG.pop(index)
+                tempFA.append(alphabet)
+                arrayFA.extend(tempFA.copy())
+                tempFA = []
+            else :
+                tempFA.append(alphabet)
+                arrayCFG.pop(index)
         elif len(tempFA) != 0 :
             #print(tempFA)
             if any(e in tempFA for e in nonVar):
                 arrayCFG.insert(index,"operation")
-                index += 2
-            elif not (":-" in tempFA and len(tempFA) == 1):
-                arrayCFG.insert(index,"var_name")
-                index += 2
             else :
-                index += 1
+                arrayCFG.insert(index,"var_name")
+            
+            index += 2
             if alphabet == "(" or alphabet == "=" or alphabet == "return" or alphabet == ";" or alphabet == "." or alphabet == "break" or alphabet == ";" or alphabet == "." or alphabet == ":":
                 tempFA.append(":-")
             arrayFA.extend(tempFA.copy())
@@ -37,6 +51,8 @@ def parseFACFG(parsedArray,CFGterminal):
                 index += 1
             else :
                 index += 1
+        #print(arrayCFG)
+    #print(arrayFA)
     return arrayFA,arrayCFG
 
 def parseNODEJS(path):
@@ -66,7 +82,7 @@ def parseNODEJS(path):
                 mustIgnore = True
     
             if not mustIgnore:
-                line.append(":-")
+                line.append("nl")
                 terminals.extend(line.copy())
             
             if line[-2:] == ["*","/"] :
