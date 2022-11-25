@@ -1,11 +1,12 @@
-from CFG import getTerminals
+#from CFG import getTerminals
+import itertools as it
 
 def parseFACFG(parsedArray,CFGterminal):
     arrayCFG = parsedArray.copy()
     tempFA = []
     arrayFA = []
 
-    nonVar = ["1","2","3","4","5","6","7","8","9","0","/","**","*","+","-","%"]
+    nonVar = ["1","2","3","4","5","6","7","8","9","0","/","**","*","+","-","%","&","|",'++','--','&&','||']
 
     isKurung = False
 
@@ -39,12 +40,21 @@ def parseNODEJS(path):
     with open(path) as file:
         lines = file.readlines()
         terminals = []
-        symbols = ['(', ')','[',']','{','}','+','-','*',':','/', '>','<' ,'"',"'",',','.','%','=','!','#']
+        symbols = ['(', ')','[',']','{','}','++','--','**',':','/','"',"'",',','.','%','==','!','#','&&','||','<=','>=']
+        symbols2 = ['=','+','-','*','<','>','&',"|"]
         for line in lines:
             for symbol in symbols:
                 line = line.replace(symbol, " "+symbol+" ")
-            line = line.replace("=  =","==")
             line = line.split()
+            for i,terminal in enumerate(line) :
+                for symbol in symbols2 :
+                    if terminal not in symbols:
+                        terminal = terminal.replace(symbol, " "+symbol+" ")
+                    #print(terminal)
+                line.pop(i)
+                line.insert(i,terminal.split())
+            line = list(it.chain.from_iterable(line))
+            #print(line)
             #print(line)
             if line[:2] == ["/","/"] :
                 line = []
@@ -60,7 +70,9 @@ def parseNODEJS(path):
         return terminals
 
 if __name__ == "__main__" :
-    c = parseNODEJS("nodejs.txt")
+    from CFG import getTerminals
+
+    c = parseNODEJS("tes.txt")
 
     print(c)
     terminal = getTerminals("terminal.txt")
