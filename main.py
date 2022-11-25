@@ -1,6 +1,7 @@
 from parserr import *
 from CFG2CNF import *
 from cyk2 import *
+from fa import *
 import argparse
 from CFG import *
 import os
@@ -21,7 +22,7 @@ if __name__=="__main__":
     cnf=getCNF("CNF2.txt")
     p=cyk(o,cnf)
     # displayMatrix(p)
-    if(cekcyk(p)):
+    if(cekcyk(p) and checkOp(a,operationChecker) and checkVar(a,variableChecker)):
         print("Accepted")
     else:
         print("Syntax Error")
