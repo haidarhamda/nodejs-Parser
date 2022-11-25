@@ -18,18 +18,21 @@ def parseFACFG(parsedArray,CFGterminal):
             tempFA.append(alphabet)
             arrayCFG.pop(index)
         elif len(tempFA) != 0 :
-            print(tempFA)
-            if alphabet == "(" or alphabet == "=" or alphabet == "return" or alphabet == ";" or alphabet == "." :
-                tempFA.append(":-")
+            #print(tempFA)
             if any(e in tempFA for e in nonVar):
                 arrayCFG.insert(index,"operation")
-            else :
+                index += 2
+            elif not (":-" in tempFA and len(tempFA) == 1):
                 arrayCFG.insert(index,"var_name")
-            index += 2
+                index += 2
+            else :
+                index += 1
+            if alphabet == "(" or alphabet == "=" or alphabet == "return" or alphabet == ";" or alphabet == "." or alphabet == "break" or alphabet == ";" or alphabet == "." or alphabet == ":":
+                tempFA.append(":-")
             arrayFA.extend(tempFA.copy())
             tempFA = []
         else :
-            if alphabet == "=" or alphabet == "(" or alphabet == "return" or alphabet == ";" or alphabet == "." :
+            if alphabet == "=" or alphabet == "(" or alphabet == "return" or alphabet == ";" or alphabet == "." or alphabet == "break" or alphabet == ":":
                 arrayFA.append(":-")
                 index += 1
             else :
