@@ -10,11 +10,9 @@ function do_something(x) {
     let a = 0
       return 2
     }
-  } else if (x == 32) {
+  } else if x == 32 {
     return 4
   } else {
     return "Momen"
   }
-for(;;){break}
-while(null){}
 }

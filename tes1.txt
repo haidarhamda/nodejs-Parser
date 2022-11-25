@@ -1,0 +1,10 @@
+function do_something(x) {
+  let a=[1,2,3]
+  for (){
+  console.log("AA")	
+  }
+  while (){
+  b+=a[i]
+  c++
+  }
+}

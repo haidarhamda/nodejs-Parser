@@ -1,0 +1,13 @@
+switch(){
+    case 1:
+        console.log("A")
+        break
+    case y:
+        console.log("B")
+        break
+    case "aaaa":
+        console.log("C")
+    default:
+        console.log("D")
+        break
+}
