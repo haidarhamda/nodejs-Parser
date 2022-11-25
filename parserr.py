@@ -46,18 +46,18 @@ def parseFACFG(parsedArray,CFGterminal):
                 arrayCFG.insert(index,"var_name")
             
             index += 2
-            if alphabet == "(" or alphabet == "=" or alphabet == "return" or alphabet == ";" or alphabet == "." or alphabet == "break" or alphabet == ":" or alphabet == "," or alphabet == "continue" or alphabet == "[" or alphabet == "delete":
-                tempFA.append(":-")
-            elif alphabet == '"' or alphabet == "'" :
+            if alphabet == '"' or alphabet == "'" :
                 ignore = True
+            elif alphabet in CFGterminal:
+                tempFA.append(":-")
             arrayFA.extend(tempFA.copy())
             tempFA = []
         else :
-            if alphabet == "=" or alphabet == "(" or alphabet == "return" or alphabet == ";" or alphabet == "." or alphabet == "break" or alphabet == ":" or alphabet == "," or alphabet == "continue" or alphabet == "[" or alphabet == "delete":
-                arrayFA.append(":-")
-            elif alphabet == '"' or alphabet == "'" :
+            if alphabet == '"' or alphabet == "'" :
                 ignore = True
                 arrayFA.append("string")
+            elif alphabet in CFGterminal:
+                arrayFA.append(":-")
             index += 1
         #print(arrayCFG)
     #print(arrayFA)
