@@ -1,6 +1,7 @@
 for (;;){
    try{ 
-     const a=10
+	throw b
+     const a=new a()
    }catch(err){
      
    }finally{x--}

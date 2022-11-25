@@ -1,1 +1,26 @@
-a == A
+while(x){continue}
+for(;;){break}
+function a(){}
+a()
+a.b(K,J)
+c=[]
+c[0]
+if(x+1){return}
+else{return null}
+switch(true){
+    case 1:
+        console.log(false)
+        break
+    case y:
+        console.log(NaN)
+        x=new a()
+        break
+    case "aaaa":
+        console.log("C")
+    default:
+        console.log(9)
+        break
+}
+try{throw x}
+catch(x){delete a.b}
+finally{delete a}
