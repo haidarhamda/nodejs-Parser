@@ -1,7 +1,7 @@
 for (;;){
    try{ 
      const a=10
-   }catch(){
+   }catch(err){
      
    }finally{x--}
 }

@@ -86,4 +86,4 @@ def writeCNF(filecfg, filecnf):
     file.close()
 
 if __name__=="__main__":
-    writeCNF("CFG3.txt","CNF2.txt")
+    writeCNF("CFG4.txt","CNF3.txt")

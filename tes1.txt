@@ -1,9 +1,9 @@
 function do_something(x) {
   let a=[1,2,3]
-  for (){
+  for (x){
   console.log("AA")	
   }
-  while (){
+  while (i){
   b+=a[i]
   c++
   }
