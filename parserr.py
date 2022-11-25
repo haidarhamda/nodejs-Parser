@@ -48,6 +48,8 @@ def parseFACFG(parsedArray,CFGterminal):
             index += 2
             if alphabet == "(" or alphabet == "=" or alphabet == "return" or alphabet == ";" or alphabet == "." or alphabet == "break" or alphabet == ";" or alphabet == "." or alphabet == ":":
                 tempFA.append(":-")
+            elif alphabet == '"' or alphabet == "'" :
+                ignore = True
             arrayFA.extend(tempFA.copy())
             tempFA = []
         else :
