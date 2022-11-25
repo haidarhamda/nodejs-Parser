@@ -19,7 +19,7 @@ def parseFACFG(parsedArray,CFGterminal):
             arrayCFG.pop(index)
         elif len(tempFA) != 0 :
             print(tempFA)
-            if alphabet == "(" or alphabet == "=" or alphabet == "return":
+            if alphabet == "(" or alphabet == "=" or alphabet == "return" or alphabet == ";" :
                 tempFA.append(":-")
             if any(e in tempFA for e in nonVar):
                 arrayCFG.insert(index,"operation")
@@ -29,7 +29,7 @@ def parseFACFG(parsedArray,CFGterminal):
             arrayFA.extend(tempFA.copy())
             tempFA = []
         else :
-            if alphabet == "=" or alphabet == "(" or alphabet == "return":
+            if alphabet == "=" or alphabet == "(" or alphabet == "return" or alphabet == ";" :
                 arrayFA.append(":-")
                 index += 1
             else :
@@ -41,7 +41,7 @@ def parseNODEJS(path):
     with open(path) as file:
         lines = file.readlines()
         terminals = []
-        symbols = [';','(', ')','[',']','{','}','++','--','**',':','/','"',"'",',','.','%','==','!','#','&&','||','<=','>=','>>','<<','!','~','+=','-=',"/=","*=","&=","|="]
+        symbols = [';','(', ')','[',']','{','}','++','--','**',':','/','"',"'",',','.','%','==','!','&&','||','<=','>=','>>','<<','!','~','+=','-=',"/=","*=","&=","|="]
         symbols2 = ['=','+','-','*','<','>','&',"|"]
         for line in lines:
             for symbol in symbols:
@@ -61,8 +61,9 @@ def parseNODEJS(path):
                 line = []
             if line[:2] == ["/","*"] :
                 mustIgnore = True
-
+    
             if not mustIgnore:
+                line.append(":-")
                 terminals.extend(line.copy())
             
             if line[-2:] == ["*","/"] :
